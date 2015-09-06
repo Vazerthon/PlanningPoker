@@ -1,0 +1,71 @@
+<head>
+    <title>Planning Poker</title>
+</head>
+<body>
+
+</body>
+
+<template name="card">
+    <div class="card">
+        <div class="card-label">{{Label}}</div>
+    </div>
+</template>
+
+<template name="homePage">
+    <h1>Home</h1>
+</template>
+
+<template name="playerPage">
+    <h1>Player</h1>
+
+    {{#each cards}}
+    {{> card}}
+    {{/each}}
+</template>
+
+<template name="scrumMasterPage">
+    <h1>Scrum Master</h1>
+
+    {{> sessions}}
+</template>
+
+<template name="layout">
+    <div class="container">
+        <header>
+            {{> loginButtons}}
+
+            <nav>
+                <a href="/">Home</a>
+
+                {{#if currentUser}}
+                <a href="/player">Player</a>
+                <a href="/master">Scrum Master</a>
+                {{/if}}
+            </nav>
+        </header>
+
+        <div class="body">
+            {{> yield}}
+        </div>
+    </div>
+</template>
+
+<template name="sessions">
+    {{#if currentUser}}
+    <div class="sessions">
+        <form class="new-session">
+            <input type="text" name="sessionName"/>
+            <input type="submit" value="Create New Session" />
+        </form>
+
+        <br />
+
+        <label for="sessionPicker">Select a Session</label>
+        <select name="sessionPicker">
+            {{#each sessions}}
+            <option value="{{Id}}">{{Name}} (Owned by {{Owner.username}})</option>
+            {{/each}}
+        </select>
+    </div>
+    {{/if}}
+</template>
