@@ -1,0 +1,27 @@
+<head>
+    <title>Planning Poker</title>
+</head>
+<body>
+
+</body>
+
+<template name="layout">
+    <div class="container">
+        <header>
+            {{> loginButtons}}
+
+            <nav>
+                <a href="/">Home</a>
+
+                {{#if currentUser}}
+                <a href="/player">Player</a>
+                <a href="/master">Scrum Master</a>
+                {{/if}}
+            </nav>
+        </header>
+
+        <div class="body">
+            {{> yield}}
+        </div>
+    </div>
+</template>
