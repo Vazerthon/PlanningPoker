@@ -1,9 +1,4 @@
-﻿'use strict'
-
-var sessionsCollectionName = 'sessions';
-var Sessions = new Mongo.Collection(sessionsCollectionName);
-
-if (Meteor.isClient) {
+﻿if (Meteor.isClient) {
     var selectedSession = new ReactiveVar();
 
     Meteor.subscribe(sessionsCollectionName);
@@ -21,7 +16,7 @@ if (Meteor.isClient) {
         'submit .new-session' : function () {
             event.preventDefault();
             var newSessionName = event.target.sessionName.value || 'unnamed session';
-            Meteor.call('crateSession', newSessionName);
+            Meteor.call('createSession', newSessionName);
             event.target.sessionName.value = '';
         },
         'change #sessionPicker': function () {
@@ -30,14 +25,8 @@ if (Meteor.isClient) {
     });
 }
 
-if (Meteor.isServer) {
-    Meteor.publish(sessionsCollectionName, function () {
-        return Sessions.find();
-    });
-}
-
 Meteor.methods({
-    crateSession: function(sessionName) {
+    createSession: function(sessionName) {
         if (!Meteor.userId()) {
             throw new Meteor.Error("not-authorized");
         }

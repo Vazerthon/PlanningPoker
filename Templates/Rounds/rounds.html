@@ -1,0 +1,14 @@
+<template name="rounds">
+    <div class="rounds">
+        <form class="new-round">
+            <input type="text" name="roundName" />
+            <input type="submit" value="Create New Round" />
+        </form>
+
+        <ul>
+            {{#each rounds}}
+            <li>{{Name}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</template>

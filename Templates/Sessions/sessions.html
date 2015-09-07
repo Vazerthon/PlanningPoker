@@ -2,7 +2,7 @@
     {{#if currentUser}}
     <div class="sessions">
         <form class="new-session">
-            <input type="text" name="sessionName"/>
+            <input type="text" name="sessionName" />
             <input type="submit" value="Create New Session" />
         </form>
 
@@ -16,9 +16,12 @@
         </select>
 
         {{#if getSelectedSession}}
-        <p>Yay!!</p>
+        <p>"{{getSelectedSession.Name}}" Selected</p>
+            {{#with getSelectedSession._id}}
+            {{> rounds}}
+            {{/with}}
         {{else}}
-        <p>Booo!!</p>
+        <p>No Session selected</p>
         {{/if}}
     </div>
     {{/if}}
