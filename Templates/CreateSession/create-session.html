@@ -1,0 +1,10 @@
+<template name="createSession">
+    {{#if currentUser}}
+    <div class="createSession">
+        <form class="new-session">
+            <input type="text" name="sessionName" />
+            <input type="submit" value="Create New Session" />
+        </form>
+    </div>
+    {{/if}}
+</template>

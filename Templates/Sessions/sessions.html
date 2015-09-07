@@ -1,13 +1,6 @@
 <template name="sessions">
     {{#if currentUser}}
     <div class="sessions">
-        <form class="new-session">
-            <input type="text" name="sessionName" />
-            <input type="submit" value="Create New Session" />
-        </form>
-
-        <br />
-
         <label for="sessionPicker">Select a Session</label>
         <select name="sessionPicker" id="sessionPicker">
             {{#each sessions}}
