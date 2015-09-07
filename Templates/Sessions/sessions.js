@@ -4,11 +4,16 @@ var sessionsCollectionName = 'sessions';
 var Sessions = new Mongo.Collection(sessionsCollectionName);
 
 if (Meteor.isClient) {
+    var selectedSession = new ReactiveVar();
+
     Meteor.subscribe(sessionsCollectionName);
 
     Template.sessions.helpers({
         sessions: function () {
             return Sessions.find();
+        },
+        getSelectedSession: function () {
+            return selectedSession.get();
         }
     });
 
@@ -18,6 +23,9 @@ if (Meteor.isClient) {
             var newSessionName = event.target.sessionName.value || 'unnamed session';
             Meteor.call('crateSession', newSessionName);
             event.target.sessionName.value = '';
+        },
+        'change #sessionPicker': function () {
+            selectedSession.set(Sessions.findOne(event.target.value));
         }
     });
 }
@@ -37,7 +45,8 @@ Meteor.methods({
         Sessions.insert({
             Name: sessionName,
             Owner: Meteor.user(),
-            Created: new Date()
+            Created: new Date(),
+            Rounds: []
         });
     }
 });

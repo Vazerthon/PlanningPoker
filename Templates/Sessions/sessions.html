@@ -9,11 +9,17 @@
         <br />
 
         <label for="sessionPicker">Select a Session</label>
-        <select name="sessionPicker">
+        <select name="sessionPicker" id="sessionPicker">
             {{#each sessions}}
-            <option value="{{Id}}">{{Name}} (Owned by {{Owner.username}})</option>
+            <option value="{{_id}}">{{Name}} (Owned by {{Owner.username}})</option>
             {{/each}}
         </select>
+
+        {{#if getSelectedSession}}
+        <p>Yay!!</p>
+        {{else}}
+        <p>Booo!!</p>
+        {{/if}}
     </div>
     {{/if}}
 </template>
