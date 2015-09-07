@@ -14,15 +14,6 @@
             <option value="{{_id}}">{{Name}} (Owned by {{Owner.username}})</option>
             {{/each}}
         </select>
-
-        {{#if getSelectedSession}}
-        <p>"{{getSelectedSession.Name}}" Selected</p>
-            {{#with getSelectedSession._id}}
-            {{> rounds}}
-            {{/with}}
-        {{else}}
-        <p>No Session selected</p>
-        {{/if}}
     </div>
     {{/if}}
 </template>

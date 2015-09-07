@@ -3,10 +3,11 @@
 
     Template.rounds.helpers({
         session: function () {
-            return Sessions.findOne(this.toString());
+            return Session.get(selectedSession);
         },
         rounds: function () {
-            return Rounds.find({ SessionId: this.toString() });
+            var currentSession = Session.get(selectedSession);
+            return Rounds.find({ SessionId: currentSession._id });
         }
     });
 

@@ -1,6 +1,4 @@
 ﻿if (Meteor.isClient) {
-    var selectedSession = new ReactiveVar();
-
     Meteor.subscribe(sessionsCollectionName);
 
     Template.sessions.helpers({
@@ -8,7 +6,7 @@
             return Sessions.find();
         },
         getSelectedSession: function () {
-            return selectedSession.get();
+            return Session.get(selectedSession);
         }
     });
 
@@ -20,7 +18,7 @@
             event.target.sessionName.value = '';
         },
         'change #sessionPicker': function () {
-            selectedSession.set(Sessions.findOne(event.target.value));
+            Session.set(selectedSession, Sessions.findOne(event.target.value));
         }
     });
 }
@@ -34,8 +32,7 @@ Meteor.methods({
         Sessions.insert({
             Name: sessionName,
             Owner: Meteor.user(),
-            Created: new Date(),
-            Rounds: []
+            Created: new Date()
         });
     }
 });

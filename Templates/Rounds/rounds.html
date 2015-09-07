@@ -1,8 +1,9 @@
 <template name="rounds">
+    {{#if session}}
     <div class="rounds">
         <form class="new-round">
-            <input type="text" name="roundName" />
-            <input type="submit" value="Create New Round" />
+            <input type="text" name="roundName"/>
+            <input type="submit" value="Create New Round in {{session.Name}}"/>
         </form>
 
         <ul>
@@ -11,4 +12,7 @@
             {{/each}}
         </ul>
     </div>
+    {{else}}
+    <h4>No session selected</h4>
+    {{/if}}
 </template>
