@@ -1,0 +1,16 @@
+<template name="createRound">
+    {{#if session}}
+    {{#if userIsSessionOwner}}
+    <div class="create-round">
+        <form class="new-round">
+            <input type="text" name="roundName" />
+            <input type="submit" value="Create New Round in {{session.Name}}" />
+        </form>
+    </div>
+    {{else}}
+    <h4>Cannot add rounds to a session owned by someone else</h4>
+    {{/if}}
+    {{else}}
+    <h4>No session selected, cannot show rounds</h4>
+    {{/if}}
+</template>

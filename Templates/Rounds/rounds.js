@@ -1,6 +1,11 @@
 ﻿if (Meteor.isClient) {
     Meteor.subscribe(roundsCollectionName);
 
+    var getCurrentRound = function () {
+        var sessionId = Session.get(selectedSession)._id;
+        return Rounds.findOne({ SessionId: sessionId }, { sort: { Created: -1 } });
+    };
+
     Template.rounds.helpers({
         session: function () {
             return Session.get(selectedSession);
@@ -10,30 +15,4 @@
             return Rounds.find({ SessionId: currentSession._id });
         }
     });
-
-    Template.rounds.events({
-        'submit .new-round': function () {
-            event.preventDefault();
-
-            var newRoundName = event.target.roundName.value || 'unnamed round';
-            var currentSession = Session.get(selectedSession);
-            var sessionId = currentSession._id;
-            Meteor.call('createRound', sessionId, newRoundName);
-            event.target.roundName.value = '';
-        }
-    });
 }
-
-Meteor.methods({
-    createRound: function (sessionId, roundName) {
-        if (!Meteor.userId()) {
-            throw new Meteor.Error("not-authorized");
-        }
-
-        Rounds.insert({
-            SessionId: sessionId,
-            Name: roundName,
-            Created: new Date()
-        });
-    }
-});

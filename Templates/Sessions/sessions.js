@@ -2,7 +2,7 @@
     Meteor.subscribe(sessionsCollectionName);
     Meteor.subscribe(roundsCollectionName);
 
-    var getCurrentRound = function() {
+    var getCurrentRound = function () {
         var sessionId = Session.get(selectedSession)._id;
         return Rounds.findOne({ SessionId: sessionId }, { sort: { Created: -1 } });
     };
@@ -16,7 +16,12 @@
         },
         currentRound: function () {
             var round = getCurrentRound();
-            return round ? round.Name : undefined;
+            if (!round) {
+                return undefined;
+            }
+
+            Session.set(currentRound, round);
+            return round.Name;
         }
     });
 
