@@ -6,11 +6,18 @@
             <input type="submit" value="Create New Round in {{session.Name}}"/>
         </form>
 
-        <ul>
+        <table>
+            <tr>
+                <th>Round</th>
+                <th>Hands Played</th>
+            </tr>
             {{#each rounds}}
-            <li>{{Name}}</li>
+            <tr>
+                <td><b>{{Name}}</b></td>
+                <td>{{#with _id}}{{> handsDisplay}}{{/with}}</td>
+            </tr>
             {{/each}}
-        </ul>
+        </table>
     </div>
     {{else}}
     <h4>No session selected</h4>

@@ -1,7 +1,10 @@
 <template name="cards">
+
+    {{#if getSelectedSession}}
     {{#each cards}}
     <div class="card">
-        <div class="card-label">{{Label}}</div>
+        <div class="card-label" data-value="{{Value}}">{{Label}}</div>
     </div>
     {{/each}}
+    {{/if}}
 </template>

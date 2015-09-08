@@ -7,6 +7,12 @@
             <option value="{{_id}}">{{Name}} (Owned by {{Owner.username}})</option>
             {{/each}}
         </select>
+
+        {{#if getSelectedSession}}
+        {{#if currentRound}}
+        <p>Current round: <b>{{currentRound}}</b></p>
+        {{/if}}
+        {{/if}}
     </div>
     {{/if}}
 </template>

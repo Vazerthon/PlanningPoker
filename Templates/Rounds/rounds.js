@@ -16,7 +16,8 @@
             event.preventDefault();
 
             var newRoundName = event.target.roundName.value || 'unnamed round';
-            var sessionId = this.toString();
+            var currentSession = Session.get(selectedSession);
+            var sessionId = currentSession._id;
             Meteor.call('createRound', sessionId, newRoundName);
             event.target.roundName.value = '';
         }
@@ -31,7 +32,8 @@ Meteor.methods({
 
         Rounds.insert({
             SessionId: sessionId,
-            Name: roundName
+            Name: roundName,
+            Created: new Date()
         });
     }
 });
