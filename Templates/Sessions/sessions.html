@@ -1,8 +1,7 @@
 <template name="sessions">
     {{#if currentUser}}
-    <div class="sessions">
-        <label for="sessionPicker">Select a Session</label>
-        <select name="sessionPicker" id="sessionPicker">
+    <div class="sessions grid">
+        <select name="sessionPicker" id="sessionPicker" class="unit whole">
             {{#each sessions}}
             <option value="{{_id}}">{{Name}} (Owned by {{Owner.username}})</option>
             {{/each}}
@@ -10,7 +9,7 @@
 
         {{#if getSelectedSession}}
         {{#if currentRound}}
-        <p>Current round: <b>{{currentRound}}</b></p>
+        <p class="unit whole">Current round: <b>{{currentRound}}</b></p>
         {{/if}}
         {{/if}}
     </div>

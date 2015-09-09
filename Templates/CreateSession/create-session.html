@@ -1,9 +1,9 @@
 <template name="createSession">
     {{#if currentUser}}
-    <div class="createSession">
+    <div class="createSession grid">
         <form class="new-session">
-            <input type="text" name="sessionName" />
-            <input type="submit" value="Create New Session" />
+            <input type="text" name="sessionName" class="unit two-thirds" />
+            <input type="submit" value="Create New Session" class="unit one-third" />
         </form>
     </div>
     {{/if}}

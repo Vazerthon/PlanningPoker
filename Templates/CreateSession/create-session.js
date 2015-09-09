@@ -2,7 +2,7 @@
     Meteor.subscribe(sessionsCollectionName);
 
     Template.createSession.events({
-        'submit .new-session' : function () {
+        'submit .new-session' : function (event) {
             event.preventDefault();
             var newSessionName = event.target.sessionName.value || 'unnamed session';
             Meteor.call('createSession', newSessionName);

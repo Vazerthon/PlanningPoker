@@ -1,9 +1,17 @@
 <template name="cards">
-    {{#if getSelectedSession}}
-    {{#each cards}}
-    <div class="card">
-        <div class="card-label" data-value="{{Value}}">{{Label}}</div>
+    <div class="cards grid">
+        {{#if getSelectedSession}}
+        {{#if handPlayed}}
+        <div class="card whole">
+            <div class="card-label">{{myHand.Value}}</div>
+        </div>
+        {{else}}
+        {{#each cards}}
+        <div class="card playable-card unit one-third">
+            <div class="card-label" data-value="{{Value}}">{{Label}}</div>
+        </div>
+        {{/each}}
+        {{/if}}
+        {{/if}}
     </div>
-    {{/each}}
-    {{/if}}
 </template>

@@ -2,17 +2,43 @@
     Meteor.subscribe(cardsCollectionName);
     Meteor.subscribe(roundsCollectionName);
 
+    var getSessionId = function () {
+        return Session.get(selectedSession)._id;
+    };
+
+    var getRoundId = function () {
+        return Session.get(currentRound)._id;
+    };
+
+    var getMyHand = function () {
+        var sessionId = getSessionId();
+        var roundId = getRoundId();
+        var me = Meteor.user();
+
+        return Hands.findOne({ SessionId: sessionId, RoundId: roundId, PlayerId: me._id })
+    };
+
     Template.cards.helpers({
         cards: function () {
             return Cards.find();
+        },
+        myHand: function () {
+            return getMyHand();
+        },
+        handPlayed: function () {
+            return getMyHand() != undefined;
         }
     });
 
     Template.cards.events({
-        'click .card': function () {
+        'click .playable-card': function (event) {
+            if (getMyHand()) {
+                return;
+            }
+
+            var sessionId = getSessionId();
+            var roundId = getRoundId();
             var value = $(event.target).data('value');
-            var sessionId = Session.get(selectedSession)._id;
-            var roundId = Session.get(currentRound)._id;
             Meteor.call('playHand', sessionId, roundId, value);
         }
     });
@@ -27,8 +53,9 @@ Meteor.methods({
         Hands.insert({
             SessionId: sessionId,
             RoundId: roundId,
-            Player: Meteor.user(),
+            PlayerId: Meteor.userId(),
             Value: value
         });
+
     }
 });

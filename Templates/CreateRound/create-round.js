@@ -20,7 +20,7 @@
     });
 
     Template.createRound.events({
-        'submit .new-round': function () {
+        'submit .new-round': function (event) {
             event.preventDefault();
 
             var newRoundName = event.target.roundName.value || 'unnamed round';

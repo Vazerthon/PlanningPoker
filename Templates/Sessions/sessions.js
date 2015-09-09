@@ -26,7 +26,7 @@
     });
 
     Template.sessions.events({
-        'change #sessionPicker': function () {
+        'change #sessionPicker': function (event) {
             Session.set(selectedSession, Sessions.findOne(event.target.value));
             Session.set(currentRound, getCurrentRound())
         }

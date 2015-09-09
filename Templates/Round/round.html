@@ -1,0 +1,15 @@
+<template name="round">
+    <tr>
+        <td><b>{{Name}}</b></td>
+        <td>{{handCount}}</td>
+        {{#if show}}
+            <td>{{#with hands}}{{> handsDisplay}}{{/with}}</td>
+            <td>{{average}}</td>
+        {{else}}
+        <td>{{#each hands}}X{{/each}}</td>
+        <td> Hidden</td>
+        {{/if}}
+        
+        <td><button class="toggle" id="{{_id}}">Show/Hide</button></td>
+    </tr>
+</template>

@@ -1,20 +1,16 @@
 <template name="rounds">
     {{#if session}}
-    <div class="rounds">
+    <div class="rounds grid">
         <table>
             <tr>
                 <th>Round</th>
                 <th>Hands Played</th>
+                <th>Hands</th>
                 <th>Average Hand</th>
                 <th>Show/Hide</th>
             </tr>
             {{#each rounds}}
-            <tr>
-                <td><b>{{Name}}</b></td>
-                <td>{{#with _id}}{{> handsDisplay}}{{/with}}</td>
-                <td>TODO</td>
-                <td>TODO</td>
-            </tr>
+            {{> round}}
             {{/each}}
         </table>
     </div>

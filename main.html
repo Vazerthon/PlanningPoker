@@ -1,5 +1,6 @@
 <head>
     <title>Planning Poker</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 </head>
 <body>
 
@@ -7,15 +8,16 @@
 
 <template name="layout">
     <div class="container">
-        <header>
-            {{> loginButtons}}
-
+        <header class="grid">
+            <span class="unit one-quarter">
+                {{> loginButtons}}
+            </span>
             <nav>
-                <a href="/">Home</a>
+                <a href="/" class="unit one-quarter">Home</a>
 
                 {{#if currentUser}}
-                <a href="/player">Player</a>
-                <a href="/master">Scrum Master</a>
+                <a href="/player" class="unit one-quarter">Player</a>
+                <a href="/master" class="unit one-quarter">Scrum Master</a>
                 {{/if}}
             </nav>
         </header>

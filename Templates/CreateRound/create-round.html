@@ -1,10 +1,10 @@
 <template name="createRound">
     {{#if session}}
     {{#if userIsSessionOwner}}
-    <div class="create-round">
+    <div class="create-round grid">
         <form class="new-round">
-            <input type="text" name="roundName" />
-            <input type="submit" value="Create New Round in {{session.Name}}" />
+            <input type="text" name="roundName" class="unit two-thirds" />
+            <input type="submit" value="Create New Round in {{session.Name}}" class="unit one-third" />
         </form>
     </div>
     {{else}}
