@@ -40,6 +40,13 @@
             var roundId = getRoundId();
             var value = $(event.target).data('value');
             Meteor.call('playHand', sessionId, roundId, value);
+        },
+        'click .played-card': function (event) {
+            if (!getMyHand()) {
+                return;
+            }
+
+            Meteor.call('deleteHand', getMyHand());
         }
     });
 }
@@ -57,5 +64,12 @@ Meteor.methods({
             Value: value
         });
 
+    },
+    deleteHand: function (hand) {
+        if (!Meteor.userId()) {
+            throw new Meteor.Error("not-authorized");
+        }
+
+        Hands.remove(hand);
     }
 });
