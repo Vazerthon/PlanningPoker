@@ -28,15 +28,32 @@ header {
     position: relative;
 }
 
-   
 
-        header nav a {
-            line-height: 20px;
-            border: 1px solid #646464;
-            border-radius: 5px;
-            text-decoration: none;
+
+    header nav a {
+        line-height: 20px;
+        border: 1px solid #646464;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+        header nav a:hover {
+            background: #ffffff;
         }
 
-            header nav a:hover {
-                background: #ffffff;
-            }
+.mini-card {
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    height: 80px;
+    width: 50px;
+    float: left;
+    margin-right: 4px;
+    line-height: 80px;
+}
+
+    .mini-card img {
+        margin-top: 20px;
+        width: 40px;
+        height: 40px;
+    }

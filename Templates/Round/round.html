@@ -1,15 +1,19 @@
 <template name="round">
-    <div>
-        <div class="unit one-fifth"><b>{{Name}}</b></div>
-        <div class="unit one-fifth">{{handCount}}</div>
+    <tr>
+        <td><b>{{Name}}</b></td>
+        <td>{{handCount}}</td>
         {{#if show}}
-            <div class="unit one-fifth">{{#with hands}}{{> handsDisplay}}{{/with}}</div>
-            <div class="unit one-fifth">{{average}}</div>
+        <td>{{#with hands}}{{> handsDisplay}}{{/with}}</td>
+        <td><div class="mini-card">{{average}}</div></td>
         {{else}}
-        <div class="unit one-fifth">{{#each hands}}X{{/each}}</div>
-        <div class="unit one-fifth"> Hidden</div>
+        <td>
+            {{#each hands}}
+            <div class="mini-card"><img src="g2g3.png" alt="G2G3 Logo" /></div>
+            {{/each}}
+        </td>
+        <td><div class="mini-card"><img src="g2g3.png" alt="G2G3 Logo" /></div></td>
         {{/if}}
-        
-        <div class="unit one-fifth"><button class="toggle" id="{{_id}}">Show/Hide</button></div>
-    </div>
+
+        <td><button class="toggle" id="{{_id}}">Show/Hide</button></td>
+    </tr>
 </template>
