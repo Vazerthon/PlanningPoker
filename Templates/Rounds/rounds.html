@@ -1,18 +1,18 @@
 <template name="rounds">
     {{#if session}}
     <div class="rounds grid">
-        <table>
-            <tr>
-                <th>Round</th>
-                <th>Hands Played</th>
-                <th>Hands</th>
-                <th>Average Hand</th>
-                <th>Show/Hide</th>
-            </tr>
+        <div>
+            <div>
+                <div class="unit one-fifth"><b>Round</b></div>
+                <div class="unit one-fifth"><b>Hands Played</b></div>
+                <div class="unit one-fifth"><b>Hands</b></div>
+                <div class="unit one-fifth"><b>Average Hand</b></div>
+                <div class="unit one-fifth"><b>Show/Hide</b></div>
+            </div>
             {{#each rounds}}
             {{> round}}
             {{/each}}
-        </table>
+        </div>
     </div>
     {{else}}
     <h4>No session selected</h4>

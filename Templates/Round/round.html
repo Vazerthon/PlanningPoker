@@ -1,15 +1,15 @@
 <template name="round">
-    <tr>
-        <td><b>{{Name}}</b></td>
-        <td>{{handCount}}</td>
+    <div>
+        <div class="unit one-fifth"><b>{{Name}}</b></div>
+        <div class="unit one-fifth">{{handCount}}</div>
         {{#if show}}
-            <td>{{#with hands}}{{> handsDisplay}}{{/with}}</td>
-            <td>{{average}}</td>
+            <div class="unit one-fifth">{{#with hands}}{{> handsDisplay}}{{/with}}</div>
+            <div class="unit one-fifth">{{average}}</div>
         {{else}}
-        <td>{{#each hands}}X{{/each}}</td>
-        <td> Hidden</td>
+        <div class="unit one-fifth">{{#each hands}}X{{/each}}</div>
+        <div class="unit one-fifth"> Hidden</div>
         {{/if}}
         
-        <td><button class="toggle" id="{{_id}}">Show/Hide</button></td>
-    </tr>
+        <div class="unit one-fifth"><button class="toggle" id="{{_id}}">Show/Hide</button></div>
+    </div>
 </template>
