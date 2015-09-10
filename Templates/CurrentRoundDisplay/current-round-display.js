@@ -6,13 +6,18 @@
         return Rounds.findOne({ SessionId: sessionId }, { sort: { Created: -1 } });
     };
 
-    Template.rounds.helpers({
-        session: function () {
+    Template.currentRoundDisplay.helpers({
+        getSelectedSession: function () {
             return Session.get(selectedSession);
         },
-        rounds: function () {
-            var currentSession = Session.get(selectedSession);
-            return Rounds.find({ SessionId: currentSession._id }, { sort: { Created: -1 } });
+        currentRound: function () {
+            var round = getCurrentRound();
+            if (!round) {
+                return undefined;
+            }
+
+            Session.set(currentRound, round);
+            return round.Name;
         }
     });
 }

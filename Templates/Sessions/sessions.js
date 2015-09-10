@@ -10,18 +10,6 @@
     Template.sessions.helpers({
         sessions: function () {
             return Sessions.find();
-        },
-        getSelectedSession: function () {
-            return Session.get(selectedSession);
-        },
-        currentRound: function () {
-            var round = getCurrentRound();
-            if (!round) {
-                return undefined;
-            }
-
-            Session.set(currentRound, round);
-            return round.Name;
         }
     });
 

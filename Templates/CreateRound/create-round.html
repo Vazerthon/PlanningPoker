@@ -3,14 +3,12 @@
     {{#if userIsSessionOwner}}
     <div class="create-round grid">
         <form class="new-round">
-            <input type="text" name="roundName" class="unit two-thirds" />
-            <input type="submit" value="Create New Round in {{session.Name}}" class="unit one-third" />
+            <input type="text" name="roundName" class="unit two-thirds"/>
+            <input type="submit" value="Create New Round in {{session.Name}}" class="unit one-third"/>
         </form>
     </div>
-    {{else}}
-    <h4>Cannot add rounds to a session owned by someone else</h4>
     {{/if}}
-    {{else}}
-    <h4>No session selected, cannot show rounds</h4>
     {{/if}}
+
+    {{> currentRoundDisplay}}
 </template>

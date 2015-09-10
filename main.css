@@ -22,13 +22,10 @@ body {
     }
 
 header {
-    background: #d2edf4;
     background-color: #d0edf5;
     padding: 20px 15px 15px 15px;
     position: relative;
 }
-
-
 
     header nav a {
         line-height: 20px;
@@ -40,6 +37,22 @@ header {
         header nav a:hover {
             background: #ffffff;
         }
+
+footer {
+    background-color: #d0edf5;
+    padding: 20px 15px 15px 15px;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
+    height: 30px;
+    font-size: 0.9em;
+    line-height: 30px;
+}
+
+footer div {
+    float: right;
+    margin-right: 50px;
+}
 
 .mini-card {
     border: 1px solid black;

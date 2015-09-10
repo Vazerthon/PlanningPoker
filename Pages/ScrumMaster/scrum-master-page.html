@@ -1,11 +1,22 @@
 <template name="scrumMasterPage">
     <h1>Scrum Master</h1>
 
-    {{> createSession}}
-    <br />
-    {{> sessions}}
+    <div class="grid">
+        <div class="unit two-thirds">
+            {{> sessions}}
+        </div>
+        <div class="unit one-third">
+            {{> createSession}}
+        </div>
+    </div>
+
     <hr />
-    {{> createRound}}
-    <hr />
+
+    <div class="grid">
+        <div class="unit whole">
+            {{> createRound}}
+        </div>
+    </div>
+
     {{> rounds}}
 </template>
