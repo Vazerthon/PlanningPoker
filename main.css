@@ -69,10 +69,8 @@ footer div {
     animation: fadeIn ease 1s;
 }
 
-    .mini-card img {
-        margin-top: 20px;
-        width: 40px;
-        height: 40px;
+    .mini-card.hidden {
+        background: url("card.png") center center no-repeat;
     }
 
 @-moz-keyframes fadeIn {
